@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Employee Details</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<!-- stylesheets -->
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	
+	<!-- javascripts -->
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+	<script type="text/javascript" src="C:/my data/My App/scripts/employee_details.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+
+	<div class="container">
+		<h1>Employee Details</h2>
+		<br>
+		<div ng-app="employeeApp" ng-controller="employeeAppController">
+			<div class="row">
+				<div class="col-sm-4">
+					<form class="form-inline">
+						<div class="form-group">
+							<input class="form-control" placeholder="Name" type="text" id="nameToSearch" ng-model="nameToSearch" required/>
+							<button class="btn btn-primary" style="margin-left:30px" ng-click="searchEmployee()">Search</button>
+						</div>				   	
+					</form>
+				</div>	
+				<div class="col-sm-1">
+					<button class="btn btn-primary" ng-click="init()">Reset</button>
+				</div>	
+				<div class="col-sm-7">
+				</div>
+			</div>
+			<br>
+			<div class="row">
+				<div class="col-sm-10">
+					<form class="form-inline">
+						<div class="form-group">
+						<input class="form-control" type="text" placeholder="Name" id="name" ng-model="name" required/>
+						<input class="form-control" type="text" placeholder="Email Id" id="email" ng-model="email" />
+						<input class="form-control" type="text" placeholder="Role" id="role" ng-model="role" />
+						<button class="btn btn-primary" style="margin-left:30px" ng-click="addNewEmployee()">Add New Employee</button>
+						</div>				   	
+					</form>
+				</div>	
+				<div class="col-sm-2">
+				</div>
+			</div>
+			<br>
+			<br>
+			<div class="row">
+				<table class="table table-hover table-bordered table-striped">
+					<tr>
+						<th class="col-sm-2">Employee ID</th>
+						<th class="col-sm-2">Employee Name</th>
+						<th class="col-sm-3">Email Address</th>
+						<th class="col-sm-3">Employee Role</th>
+						<th class="col-sm-2"></th>
+						
+					</tr>
+					<tr ng-repeat="emp in employees">
+						<td class="col-sm-2">{{emp.emp_id}}</td>
+						<td class="col-sm-2">{{emp.emp_name}}</td>
+						<td class="col-sm-3">{{emp.emp_email}}</td>
+						<td class="col-sm-3">{{emp.emp_role}}</td>
+						<td class="col-sm-2">
+							<button class="btn btn-danger btn-s" ng-click="deleteEmployee(emp.emp_id)">Remove</button>
+						</td>
+					</tr>					
+				</table>
+			</div>
+		</div><!-- app close -->
+	</div> 
+</body>
+</html>
